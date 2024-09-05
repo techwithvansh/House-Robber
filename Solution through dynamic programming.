@@ -1,1 +1,17 @@
+class Solution {
+public:
+  int f(int idx,vector<int> & nums,vector<int> & v){
+    if(idx==0) return nums[idx];
+    if(idx<0) return 0;
+    if(v[idx]!=-1) return v[idx];
+    int robe=nums[idx]+f(idx-2,nums,v);
+     int notrobe=0+f(idx-1,nums,v);
+     return v[idx]=max(robe,notrobe);
+  }
+    int rob(vector<int>& nums) {
+        int n=nums.size();
+        vector<int>v(n,-1);
+       return f(n-1,nums,v);
+    }
+};
 
